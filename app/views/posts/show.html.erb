@@ -1,0 +1,38 @@
+<div class="row justify-content-center p-4">
+  <div class="col-md-4 ">
+    <div class="card shadow-sm mb-4 p-2 border border-primary border-3">
+      <div class="card-body ">
+        <div class="card-title border border-2  border-primary p-2 rounded-4 ">
+          <h3 class="card-title mb-2 text-center fs-1"><%= @post.title%> </h3>
+            <hr class="">
+          <p class="card-text text-center fs-3"><%= @post.body %> </p>
+        </div>
+        <p class="text-muted mb-3 border border-2 border-primary p-2 mt-4 rounded-4 fs-5">Author: <%= @post.user.email %> </p>
+
+        <div class="card-comments border border-2 border-primary rounded-4 p-2">
+          <h3 class="m-2 p-2 text-center">Comments</h3>
+          <%= render @post.comments %>
+
+          <% if user_signed_in? %>
+            <%= form_with( model: [ @post, @post.comments.build ], local: true) do |f| %>
+              <div class="mb-3">
+                <%= f.text_area :body, rows: 4, class: "form-control fs-4", placeholder: "Yorumunuzu yazınız..." %>
+              </div>
+              <div class="button d-grid gap-2">
+              <%= f.submit "Yorum Gönder", class: "btn btn-primary btn-lg hover" %>
+              </div>
+            <% end %>
+          <% else %>
+            <p>Yorum yapmak için <%= link_to "giriş yapın", new_user_session_path %> </p>
+          <%end%>
+        </div>
+        <div class=" pt-4 text-center fs-5">
+          <%= link_to "Edit this post", edit_post_path(@post)%> |
+          <%= link_to "Back to posts", posts_path %>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

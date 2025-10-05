@@ -1,0 +1,23 @@
+<% content_for :title, "Editing post" %>
+<div class="row justify-content-center p-4">
+  <div class="col-md-4">
+    <div class="card shadow-sm mb-4 p-2 border-primary border-3">
+      <div class="card-body">
+
+        <h1 class="text-center">Editing post</h1>
+
+        <%= render "form", post: @post %>
+
+        <br>
+
+        <div class="text-center fs-5">
+          <%= link_to "Show this post", @post %> |
+          <%= link_to "Back to posts", posts_path %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

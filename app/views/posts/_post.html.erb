@@ -1,0 +1,13 @@
+<div id="<%= dom_id post %>" class="card mb-3 p-3 shadow-sm" >
+    <h5 class="card-title"> <%= post.title %> </h5>
+    <p class="card-text"> <%= truncate(post.body, length:200) %></p>
+    <p class="text-muted">Author: <%= post.user.email %></p>
+  
+    <div class="d-flex gap-2">
+      <%= link_to "Show", post_path(post), class: "btn btn-outline-primary btn-sm" %>
+      <%= if post.user == current_user %>
+        <%= link_to "Edit" edit_post_path(post), class: "btn btn-outline-warning btn-sm" %>
+        <%= link_to "Delete", post_path(post), method: :delete, class: "btn btn-outline-danger btn-sm" %>
+      <% end %>
+    </div>
+  </div>

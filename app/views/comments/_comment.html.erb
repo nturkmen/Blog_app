@@ -1,0 +1,10 @@
+<div class="comment mb-2 p-2 border rounded">
+    <p><strong> <%= comment.user.username.presence ||comment.user.username %> </strong></p>
+    <p  class="col-md-10"> 
+      <%= comment.body%> 
+        <% if comment.user == current_user %>
+          <%= link_to "-", [comment.post, comment], data:{ turbo_method: :delete}, class: "btn btn-sm btn-danger col-md-2" %>
+        <% end %>
+    </p>
+
+</div>

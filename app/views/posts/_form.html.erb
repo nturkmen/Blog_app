@@ -1,0 +1,33 @@
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div>
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<hr>
+
+  <div class="pt-3">
+    <%= form.label :title, style: "display: block", class: "fs-3 pb-2"%>
+    <%= form.text_field :title, class: "form-control border border-2 border-primary rounded-4 ", placeholder: "Title" %>
+  </div>
+
+  <div class="pt-3">
+    <%= form.label :body, style: "display: block", class: "fs-3 pb-2" %>
+    <%= form.textarea :body, rows: 3, class:"form-control border border-2 border-primary rounded-4" , placeholder: "Body" %>
+  </div>
+
+  <div class="pt-3">
+    <%= form.label :user_id, style: "display: block", class:"fs-3 pb-2" %>
+    <%= form.text_field :user_id,class:"form-control border border-2 border-primary rounded-4", placeholder:"User" %>
+  </div>
+
+  <div class="pt-4  d-grid gap-2">
+    <%= form.submit "Gönder", class:" btn btn-primary btn-block btn-lg hover fs-3" %>
+  </div>
+<% end %>

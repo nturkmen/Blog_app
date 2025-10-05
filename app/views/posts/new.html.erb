@@ -1,0 +1,24 @@
+<div class=" container d-flex justify-content-center aling-items-center p-2" style="min-height: 100px;">
+  <div class="card shadow p-4 " style="width: 400px; border-radius:12px">
+    <h2 class="text-center mb-4">New Post</h2>
+    
+    
+    <%= form_with(model: @post, local: true ) do |f| %>
+      <div class="mb-2">
+        <%= f.label :title, class: "form-label fw-bold" %>
+        <%= f.text_field :title, class: "form-control", placeholder: "Post title" %>
+      </div>
+    
+      <div class="mb-2">
+        <%= f.label :body, class: "form-label fw-bold" %>
+        <%= f.text_area :body, class:"form-control", placeholder: "Post title" %>
+      </div>
+
+      <%= f.submit "Create Post", class: "btn btn-primary w-100" %>
+    <% end %>
+
+    <div class="text-center mt-3">
+      <%= link_to "Back to Posts", posts_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+</div>
